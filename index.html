@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Du-N2DVC Demo</title>
+  <style>
+body {
+  font-size: 15px;
+}
+audio {
+  height: 40px;
+  width: 180px;
+}
+toc_container {
+  background: #f9f9f9 none repeat scroll 0 0;
+  border: 1px solid #aaa;
+  display: table;
+  font-size: 95%;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 8px;
+  width: auto;
+}
+
+</style>
+</head>
+<body>
+    <h2>Du-N2DVC: A Duration-aware Normal-to-dysarthric Voice Conversion Approach with Diffusion Probabilistic Model</h2>
+    
+    <hr style="height:3px;border:none;border-top:5px solid #555555;" />
+  
+    <strong><p class="toc_title", style="font-size:20px">Dysarthric Speakers</p></strong>
+      <div id="toc_container">
+         <ul>
+            <li><strong><a href="#com-F03">F02 (female, dysarthria-moderate-severe)</a></li></strong>
+            <li><strong><a href="#com-F05">F05 (female, dysarthria-mild)</a></li></strong>
+            <li><strong><a href="#com-M04">M04 (male, dysarthria-severe)</a></li></strong>
+            <li><strong><a href="#com-M05">M05 (male, dysarthria-moderate)</a></li></strong>
+            <li><strong><a href="#com-M09">M09 (male, dysarthria-mild)</a></li></strong>
+            <li><strong><a href="#com-M16">M16 (male, dysarthria-moderate-severe)</a></li></strong>
+         </ul>
+      </div>
+
+  <hr style="height:3px;border:none;border-top:5px solid #555555;" />
+
+    <h2>Audio Samples</h2>
+
+    <a name="com-F02">
+      <h3>F02 (female, dysarthria-moderate-severe):</h3>
+      </a>
+      <table border="1">
+      <tr>
+      <th>No.</th>
+      <th>Source Voice</th>
+      <th>Target Voice</th>
+      <th>Generated Voice</th>
+      <th>Text</th>
+      </tr>
+  
+      <tr>
+        <td><div id="F02-No.1">1</div></td>
+        <td>
+        <audio controls>
+        <source src="./audios/F02/2_source_CM09_B2_UW27_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/F02/2_target_F02_B1_D2_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/F02/2_generated_CM09_B2_UW27_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td align="center">anxieties</td>
+        </tr>
+  
+      <tr>
+      <td><div id="F02-No.2">2</div></td>
+      <td>
+      <audio controls>
+      <source src="./audios/F02/4_source_CM13_B2_UW60_M5-1.wav" type="audio/wav">
+      </audio>
+      </td>
+      <td>
+      <audio controls>
+      <source src="./audios/F02/4_target_F02_B1_CW23_M5-1.wav" type="audio/wav">
+      </audio>
+      </td>
+      <td>
+        <audio controls>
+        <source src="./audios/F02/4_generated_CM13_B2_UW60_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+      <td align="center">brotherhood</td>
+      </tr>
+
+      <tr>
+        <td><div id="F02-No.3">3</div></td>
+        <td>
+        <audio controls>
+        <source src="./audios/F02/5_source_CM13_B2_CW58_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/F02/5_target_F02_B3_CW72_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+          <audio controls>
+          <source src="./audios/F02/5_generated_CM13_B2_CW58_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+        <td align="center">these</td>
+        </tr>
+
+      <tr>
+        <td><div id="F02-No.4">4</div></td>
+        <td>
+        <audio controls>
+        <source src="./audios/F02/11_source_CF02_B2_CW78_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/F02/11_target_F02_B3_UW68_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+          <audio controls>
+          <source src="./audios/F02/11_generated_CF02_B2_CW78_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+        <td align="center">people</td>
+        </tr>
+
+      <tr>
+        <td><div id="F02-No.5">5</div></td>
+        <td>
+        <audio controls>
+        <source src="./audios/F02/15_source_CM09_B2_UW22_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/F02/15_target_F02_B3_UW64_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/F02/15_generated_CM09_B2_UW22_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td align="center">agricultural</td>
+        </tr>
+
+      <tr>
+        <td><div id="F02-No.6">6</div></td>
+        <td>
+        <audio controls>
+        <source src="./audios/F02/19_source_CM12_B2_C6_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/F02/19_target_F02_B1_CW69_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/F02/19_generated_CM12_B2_C6_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td align="center">Escape</td>
+        </tr>
+      <tr>
+          <td><div id="F02-No.7">7</div></td>
+          <td>
+          <audio controls>
+          <source src="./audios/F02/21_source_CF04_B2_UW46_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/F02/21_target_F02_B3_UW56_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/F02/21_generated_CF04_B2_UW46_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td align="center">Bengal</td>
+          </tr>
+        <tr>
+            <td><div id="F02-No.8">8</div></td>
+            <td>
+            <audio controls>
+            <source src="./audios/F02/22_source_CM10_B2_CW44_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/F02/22_target_F02_B3_CW98_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/F02/22_generated_CM10_B2_CW44_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td align="center">which</td>
+            </tr>
+      </table>
+
+      <a name="com-F05">
+        <h3>F05 (female, dysarthria-mild):</h3>
+        </a>
+        <table border="1">
+        <tr>
+        <th>No.</th>
+        <th>Source Voice</th>
+        <th>Target Voice</th>
+        <th>Generated Voice</th>
+        <th>Text</th>
+        </tr>
+    
+        <tr>
+          <td><div id="F05-No.1">1</div></td>
+          <td>
+          <audio controls>
+          <source src="./audios/F05/2_source_CM12_B2_C6_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/F05/2_target_F05_B3_CW13_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/F05/2_generated_CM12_B2_C6_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td align="center">Escape</td>
+          </tr>
+    
+        <tr>
+        <td><div id="F05-No.2">2</div></td>
+        <td>
+        <audio controls>
+        <source src="./audios/F05/6_source_CF05_B2_UW33_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/F05/6_target_F05_B1_CW16_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+          <audio controls>
+          <source src="./audios/F05/6_generated_CF05_B2_UW33_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+        <td align="center">approach</td>
+        </tr>
+  
+        <tr>
+          <td><div id="F05-No.3">3</div></td>
+          <td>
+          <audio controls>
+          <source src="./audios/F05/10_source_CM04_B2_CW41_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/F05/10_target_F05_B3_CW57_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+            <audio controls>
+            <source src="./audios/F05/10_generated_CM04_B2_CW41_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+          <td align="center">use</td>
+          </tr>
+  
+        <tr>
+          <td><div id="F05-No.4">4</div></td>
+          <td>
+          <audio controls>
+          <source src="./audios/F05/17_source_CM08_B2_UW82_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/F05/17_target_F05_B3_UW41_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+            <audio controls>
+            <source src="./audios/F05/17_generated_CM08_B2_UW82_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+          <td align="center">watch</td>
+          </tr>
+  
+        <tr>
+          <td><div id="F05-No.5">5</div></td>
+          <td>
+          <audio controls>
+          <source src="./audios/F05/18_source_CF05_B2_D1_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/F05/18_target_F05_B3_LJ_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/F05/18_generated_CF05_B2_D1_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td align="center">One</td>
+          </tr>
+  
+        <tr>
+          <td><div id="F05-No.6">6</div></td>
+          <td>
+          <audio controls>
+          <source src="./audios/F05/21_source_CM06_B2_CW4_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/F05/21_target_F05_B1_UW46_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/F05/21_generated_CM06_B2_CW4_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td align="center">a</td>
+          </tr>
+        <tr>
+            <td><div id="F05-No.7">7</div></td>
+            <td>
+            <audio controls>
+            <source src="./audios/F05/24_source_CF04_B2_D7_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/F05/24_target_F05_B3_C13_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/F05/24_generated_CF04_B2_D7_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td align="center">Seven</td>
+            </tr>
+          <tr>
+              <td><div id="F05-No.8">8</div></td>
+              <td>
+              <audio controls>
+              <source src="./audios/F05/26_source_CF05_B2_UW13_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/F05/26_target_F05_B3_CW84_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/F05/26_generated_CF05_B2_UW13_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td align="center">unusual</td>
+              </tr>
+        </table>
+
+      <a name="com-M04">
+      <h3>M04 (male, dysarthria-severe):</h3>
+      </a>
+      <table border="1">
+      <tr>
+      <th>No.</th>
+      <th>Source Voice</th>
+      <th>Target Voice</th>
+      <th>Generated Voice</th>
+      <th>Text</th>
+      </tr>
+  
+      <tr>
+        <td><div id="M04-No.1">1</div></td>
+        <td>
+        <audio controls>
+        <source src="./audios/M04/1_source_CF04_B2_UW38_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/M04/1_target_M04_B3_CW28_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/M04/1_generated_CF04_B2_UW38_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td align="center">bachelor</td>
+        </tr>
+  
+      <tr>
+      <td><div id="M04-No.2">2</div></td>
+      <td>
+      <audio controls>
+      <source src="./audios/M04/2_source_CM09_B2_LT_M5-1.wav" type="audio/wav">
+      </audio>
+      </td>
+      <td>
+      <audio controls>
+      <source src="./audios/M04/2_target_M04_B1_UW65_M5-1.wav" type="audio/wav">
+      </audio>
+      </td>
+      <td>
+        <audio controls>
+        <source src="./audios/M04/2_generated_CM09_B2_LT_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+      <td align="center">Tango</td>
+      </tr>
+
+      <tr>
+        <td><div id="M04-No.3">3</div></td>
+        <td>
+        <audio controls>
+        <source src="./audios/M04/6_source_CM05_B2_UW31_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/M04/6_target_M04_B3_UW17_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+          <audio controls>
+          <source src="./audios/M04/6_generated_CM05_B2_UW31_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+        <td align="center">appreciable</td>
+        </tr>
+
+      <tr>
+        <td><div id="M04-No.4">4</div></td>
+        <td>
+        <audio controls>
+        <source src="./audios/M04/7_source_CM13_B2_UW70_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/M04/7_target_M04_B3_UW99_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+          <audio controls>
+          <source src="./audios/M04/7_generated_CM13_B2_UW70_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+        <td align="center">coherent</td>
+        </tr>
+
+      <tr>
+        <td><div id="M04-No.5">5</div></td>
+        <td>
+        <audio controls>
+        <source src="./audios/M04/42_source_CF04_B2_UW3_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/M04/42_target_M04_B1_CW48_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/M04/42_generated_CF04_B2_UW3_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td align="center">Nuremberg</td>
+        </tr>
+
+      <tr>
+        <td><div id="M04-No.6">6</div></td>
+        <td>
+        <audio controls>
+        <source src="./audios/M04/8_source_CF05_B2_UW6_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/M04/8_target_M04_B1_CW31_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/M04/8_generated_CF05_B2_UW6_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td align="center">roof</td>
+        </tr>
+      <tr>
+          <td><div id="M04-No.7">7</div></td>
+          <td>
+          <audio controls>
+          <source src="./audios/M04/23_source_CF03_B2_UW62_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/M04/23_target_M04_B1_UW98_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/M04/23_generated_CF03_B2_UW62_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td align="center">bulge</td>
+          </tr>
+        <tr>
+            <td><div id="M04-No.8">8</div></td>
+            <td>
+            <audio controls>
+            <source src="./audios/M04/40_source_CM06_B2_CW93_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/M04/40_target_M04_B1_CW75_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/M04/40_generated_CM06_B2_CW93_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td align="center">did</td>
+            </tr>
+      </table>
+
+      <a name="com-M05">
+        <h3>M05 (male, dysarthria-moderate):</h3>
+        </a>
+        <table border="1">
+        <tr>
+        <th>No.</th>
+        <th>Source Voice</th>
+        <th>Target Voice</th>
+        <th>Generated Voice</th>
+        <th>Text</th>
+        </tr>
+    
+        <tr>
+          <td><div id="M05-No.1">1</div></td>
+          <td>
+          <audio controls>
+          <source src="./audios/M05/1_source_CF04_B2_UW91_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/M05/1_target_M05_B3_CW6_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/M05/1_generated_CF04_B2_UW91_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td align="center">orange</td>
+          </tr>
+    
+        <tr>
+        <td><div id="M05-No.2">2</div></td>
+        <td>
+        <audio controls>
+        <source src="./audios/M05/2_source_CM13_B2_UW47_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+        <audio controls>
+        <source src="./audios/M05/2_target_M05_B1_CW35_M5-1.wav" type="audio/wav">
+        </audio>
+        </td>
+        <td>
+          <audio controls>
+          <source src="./audios/M05/2_generated_CM13_B2_UW47_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+        <td align="center">bequeath</td>
+        </tr>
+  
+        <tr>
+          <td><div id="M05-No.3">3</div></td>
+          <td>
+          <audio controls>
+          <source src="./audios/M05/4_source_CM09_B2_LC_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/M05/4_target_M05_B1_UW53_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+            <audio controls>
+            <source src="./audios/M05/4_generated_CM09_B2_LC_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+          <td align="center">Charlie</td>
+          </tr>
+  
+        <tr>
+          <td><div id="M05-No.4">4</div></td>
+          <td>
+          <audio controls>
+          <source src="./audios/M05/5_source_CF02_B2_UW97_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/M05/5_target_M05_B3_CW67_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+            <audio controls>
+            <source src="./audios/M05/5_generated_CF02_B2_UW97_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+          <td align="center">bath</td>
+          </tr>
+  
+        <tr>
+          <td><div id="M05-No.5">5</div></td>
+          <td>
+          <audio controls>
+          <source src="./audios/M05/6_source_CM09_B2_CW33_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/M05/6_target_M05_B1_LN_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/M05/6_generated_CM09_B2_CW33_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td align="center">all</td>
+          </tr>
+  
+        <tr>
+          <td><div id="M05-No.6">6</div></td>
+          <td>
+          <audio controls>
+          <source src="./audios/M05/7_source_CF02_B2_UW38_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/M05/7_target_M05_B3_UW15_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/M05/7_generated_CF02_B2_UW38_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td align="center">bachelor</td>
+          </tr>
+        <tr>
+            <td><div id="M05-No.7">7</div></td>
+            <td>
+            <audio controls>
+            <source src="./audios/M05/8_source_CM04_B2_D4_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/M05/8_target_M05_B3_LS_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/M05/8_generated_CM04_B2_D4_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td align="center">Four</td>
+            </tr>
+          <tr>
+              <td><div id="M05-No.8">8</div></td>
+              <td>
+              <audio controls>
+              <source src="./audios/M05/9_source_CF04_B2_UW81_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/M05/9_target_M05_B3_LF_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/M05/9_generated_CF04_B2_UW81_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td align="center">endowments</td>
+              </tr>
+        </table>
+
+        <a name="com-M09">
+          <h3>M09 (male, dysarthria-mild):</h3>
+          </a>
+          <table border="1">
+          <tr>
+          <th>No.</th>
+          <th>Source Voice</th>
+          <th>Target Voice</th>
+          <th>Generated Voice</th>
+          <th>Text</th>
+          </tr>
+      
+          <tr>
+            <td><div id="M09-No.1">1</div></td>
+            <td>
+            <audio controls>
+            <source src="./audios/M09/1_source_CF03_B2_CW21_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/M09/1_target_M09_B3_LV_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/M09/1_generated_CF03_B2_CW21_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td align="center">at</td>
+            </tr>
+      
+          <tr>
+          <td><div id="M09-No.2">2</div></td>
+          <td>
+          <audio controls>
+          <source src="./audios/M09/2_source_CF02_B2_UW49_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+          <audio controls>
+          <source src="./audios/M09/2_target_M09_B3_UW66_M5-1.wav" type="audio/wav">
+          </audio>
+          </td>
+          <td>
+            <audio controls>
+            <source src="./audios/M09/2_generated_CF02_B2_UW49_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+          <td align="center">betroth</td>
+          </tr>
+    
+          <tr>
+            <td><div id="M09-No.3">3</div></td>
+            <td>
+            <audio controls>
+            <source src="./audios/M09/3_source_CF03_B2_LZ_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/M09/3_target_M09_B3_LW_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+              <audio controls>
+              <source src="./audios/M09/3_generated_CF03_B2_LZ_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+            <td align="center">Zulu</td>
+            </tr>
+    
+          <tr>
+            <td><div id="M09-No.4">4</div></td>
+            <td>
+            <audio controls>
+            <source src="./audios/M09/4_source_CM09_B2_CW76_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/M09/4_target_M09_B1_CW42_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+              <audio controls>
+              <source src="./audios/M09/4_generated_CM09_B2_CW76_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+            <td align="center">way</td>
+            </tr>
+    
+          <tr>
+            <td><div id="M09-No.5">5</div></td>
+            <td>
+            <audio controls>
+            <source src="./audios/M09/5_source_CF02_B2_CW96_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/M09/5_target_M09_B3_LQ_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/M09/5_generated_CF02_B2_CW96_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td align="center">made</td>
+            </tr>
+    
+          <tr>
+            <td><div id="M09-No.6">6</div></td>
+            <td>
+            <audio controls>
+            <source src="./audios/M09/6_source_CM13_B2_CW46_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/M09/6_target_M09_B1_UW86_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/M09/6_generated_CM13_B2_CW46_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td align="center">do</td>
+            </tr>
+          <tr>
+              <td><div id="M09-No.7">7</div></td>
+              <td>
+              <audio controls>
+              <source src="./audios/M09/7_source_CM05_B2_UW87_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/M09/7_target_M09_B1_CW71_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/M09/7_generated_CM05_B2_UW87_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td align="center">car</td>
+              </tr>
+            <tr>
+                <td><div id="M09-No.8">8</div></td>
+                <td>
+                <audio controls>
+                <source src="./audios/M09/8_source_CF02_B2_UW21_M5-1.wav" type="audio/wav">
+                </audio>
+                </td>
+                <td>
+                <audio controls>
+                <source src="./audios/M09/8_target_M09_B1_CW48_M5-1.wav" type="audio/wav">
+                </audio>
+                </td>
+                <td>
+                <audio controls>
+                <source src="./audios/M09/8_generated_CF02_B2_UW21_M5-1.wav" type="audio/wav">
+                </audio>
+                </td>
+                <td align="center">advantageous</td>
+                </tr>
+          </table>
+          <a name="com-M16">
+            <h3>M16 (male, dysarthria-moderate-severe):</h3>
+            </a>
+            <table border="1">
+            <tr>
+            <th>No.</th>
+            <th>Source Voice</th>
+            <th>Target Voice</th>
+            <th>Generated Voice</th>
+            <th>Text</th>
+            </tr>
+        
+            <tr>
+              <td><div id="M16-No.1">1</div></td>
+              <td>
+              <audio controls>
+              <source src="./audios/M16/2_source_CM01_B2_UW73_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/M16/2_target_M16_B1_LM_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/M16/2_generated_CM01_B2_UW73_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td align="center">cowhide</td>
+              </tr>
+        
+            <tr>
+            <td><div id="M16-No.2">2</div></td>
+            <td>
+            <audio controls>
+            <source src="./audios/M16/37_source_CM10_B2_LN_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+            <audio controls>
+            <source src="./audios/M16/37_target_M16_B3_UW29_M5-1.wav" type="audio/wav">
+            </audio>
+            </td>
+            <td>
+              <audio controls>
+              <source src="./audios/M16/37_generated_CM10_B2_LN_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+            <td align="center">November</td>
+            </tr>
+      
+            <tr>
+              <td><div id="M16-No.3">3</div></td>
+              <td>
+              <audio controls>
+              <source src="./audios/M16/10_source_CM06_B2_UW39_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/M16/10_target_M16_B3_D7_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+                <audio controls>
+                <source src="./audios/M16/10_generated_CM06_B2_UW39_M5-1.wav" type="audio/wav">
+                </audio>
+                </td>
+              <td align="center">bathe</td>
+              </tr>
+      
+            <tr>
+              <td><div id="M16-No.4">4</div></td>
+              <td>
+              <audio controls>
+              <source src="./audios/M16/13_source_CF03_B2_CW68_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/M16/13_target_M16_B3_UW98_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+                <audio controls>
+                <source src="./audios/M16/13_generated_CF03_B2_CW68_M5-1.wav" type="audio/wav">
+                </audio>
+                </td>
+              <td align="center">has</td>
+              </tr>
+      
+            <tr>
+              <td><div id="M16-No.5">5</div></td>
+              <td>
+              <audio controls>
+              <source src="./audios/M16/15_source_CF05_B2_CW89_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/M16/15_target_M16_B1_D6_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/M16/15_generated_CF05_B2_CW89_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td align="center">find</td>
+              </tr>
+      
+            <tr>
+              <td><div id="M16-No.6">6</div></td>
+              <td>
+              <audio controls>
+              <source src="./audios/M16/17_source_CM12_B2_UW42_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/M16/17_target_M16_B3_UW49_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td>
+              <audio controls>
+              <source src="./audios/M16/17_generated_CM12_B2_UW42_M5-1.wav" type="audio/wav">
+              </audio>
+              </td>
+              <td align="center">battlements</td>
+              </tr>
+            <tr>
+                <td><div id="M16-No.7">7</div></td>
+                <td>
+                <audio controls>
+                <source src="./audios/M16/20_source_CF02_B2_C16_M5-1.wav" type="audio/wav">
+                </audio>
+                </td>
+                <td>
+                <audio controls>
+                <source src="./audios/M16/20_target_M16_B3_CW34_M5-1.wav" type="audio/wav">
+                </audio>
+                </td>
+                <td>
+                <audio controls>
+                <source src="./audios/M16/20_generated_CF02_B2_C16_M5-1.wav" type="audio/wav">
+                </audio>
+                </td>
+                <td align="center">Upward</td>
+                </tr>
+              <tr>
+                  <td><div id="M16-No.8">8</div></td>
+                  <td>
+                  <audio controls>
+                  <source src="./audios/M16/28_source_CM05_B2_UW5_M5-1.wav" type="audio/wav">
+                  </audio>
+                  </td>
+                  <td>
+                  <audio controls>
+                  <source src="./audios/M16/28_target_M16_B1_LU_M5-1.wav" type="audio/wav">
+                  </audio>
+                  </td>
+                  <td>
+                  <audio controls>
+                  <source src="./audios/M16/28_generated_CM05_B2_UW5_M5-1.wav" type="audio/wav">
+                  </audio>
+                  </td>
+                  <td align="center">re-united</td>
+                  </tr>
+            </table>
+
+            
+</body>
+</html>
